@@ -17,14 +17,7 @@ body_create = {
     "name": "Бульбазавр",
     "photo_id": 1
 }
-body_name ={
-    "pokemon_id": "306800",
-    "name": "OKI",
-    "photo_id": 2
-}
-body_pokeball = {
-    "pokemon_id": "306800"
-}
+
 
 '''response = requests.post(url = f'{URL}/trainers/reg/', headers = HEADER , json =body_registration)
 print(response.text)'''
@@ -32,11 +25,21 @@ print(response.text)'''
 '''response_confirmation = requests.post(url = f'{URL}/trainers/confirm_email', headers = HEADER , json =body_confirmation)
 print(response_confirmation.text)'''
 
-'''response_create = requests.post(url = f'{URL}/pokemons', headers = HEADER , json = body_create)
-print(response_create.text)'''
+response_create = requests.post(url = f'{URL}/pokemons', headers = HEADER , json = body_create)
+print(response_create.text)
 
-'''message = response_create.json()['message']
-print(message) '''
+message = response_create.json()['message']
+print(message) 
+pokemon_id = response_create.json()['message']
+
+body_name ={
+    "pokemon_id": pokemon_id,
+    "name": "OKI",
+    "photo_id": 2
+}
+body_pokeball = {
+    "pokemon_id": pokemon_id
+}
 
 '''response_name = requests.put(url = f'{URL}/pokemons', headers = HEADER , json = body_name)
 print(response_name.json())'''
