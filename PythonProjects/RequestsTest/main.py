@@ -30,7 +30,7 @@ print(response_create.text)
 
 message = response_create.json()['message']
 print(message) 
-pokemon_id = response_create.json()['message']
+pokemon_id = response_create.json()['id']
 
 body_name ={
     "pokemon_id": pokemon_id,
@@ -41,8 +41,8 @@ body_pokeball = {
     "pokemon_id": pokemon_id
 }
 
-'''response_name = requests.put(url = f'{URL}/pokemons', headers = HEADER , json = body_name)
-print(response_name.json())'''
+response_name = requests.put(url = f'{URL}/pokemons', headers = HEADER , json = body_name)
+print(response_name.json())
 
-'''response_pokeball = requests.post(url = f'{URL}/trainers/add_pokeball', headers = HEADER , json = body_pokeball)
-print(response_pokeball.json())'''
+response_pokeball = requests.post(url = f'{URL}/trainers/add_pokeball', headers = HEADER , json = body_pokeball)
+print(response_pokeball.json())
